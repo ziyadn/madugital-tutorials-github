@@ -1,5 +1,5 @@
 # madugital-tutorials-github
-ini adalah contoh mini project Habis Kerja tentang Modelling Leads Scoring perusahaan Madugital 
+ini adalah contoh mini project Habis Kerja : Data Scientist Course, tentang Modelling Leads Scoring perusahaan Madugital.
 
 ---
 
@@ -38,3 +38,42 @@ Data yang telah diupload akan digunakan untuk melatih model machine learning. Ka
 Data untuk proyek ini tersedia dalam file `lead_scoring.csv`, dengan kamus data terkait yang disediakan dalam `Leads Data Dictionary.xlsx`.
 
 ---
+## Pemahaman Data (Data Understanding)
+Pada tahap ini, kami telah memuat data ke dalam lingkungan Python menggunakan pandas dan melakukan inspeksi awal. Berikut adalah temuan awal kami:
+
+- Data terdiri dari 9240 baris dan 37 kolom.
+- Setiap kolom mewakili informasi berikut:
+  - **Prospect ID**: Identitas unik setiap calon pelanggan.
+  - **Lead Number**: Nomor yang diberikan kepada setiap prospek yang diperoleh.
+  - **Lead Origin**: Asal usul bagaimana prospek mendapatkan akses ke dalam sistem.
+  - **Lead Source**: Sumber dari mana prospek diakuisisi.
+  - **Do Not Email**: Tandai jika prospek tidak ingin dihubungi melalui email.
+  - **Do Not Call**: Tandai jika prospek tidak ingin dihubungi melalui telepon.
+  - **Converted**: Apakah prospek berhasil dikonversi menjadi pelanggan.
+  - **TotalVisits**: Jumlah total kunjungan yang dilakukan oleh prospek ke website.
+  - **Total Time Spent on Website**: Total waktu yang dihabiskan oleh prospek di website.
+  - **Page Views Per Visit**: Rata-rata halaman yang dilihat per kunjungan.
+  - **Last Activity**: Aktivitas terakhir yang dilakukan oleh pelanggan.
+  - **Country**: Negara dari pelanggan.
+  - **Specialization**: Domain industri tempat pelanggan bekerja.
+  - **How did you hear about Madugital**: Sumber informasi dari mana pelanggan mengetahui tentang Madugital.
+  - **What is your current occupation**: Menunjukkan apakah pelanggan adalah seorang pelajar, menganggur, atau bekerja.
+  - **What matters most to you in choosing this product**: Apa yang paling dihargai pelanggan ketika memilih produk.
+  - **Search**: Menunjukkan apakah pelanggan melihat iklan dalam hasil pencarian mesin pencari.
+  - **Through Recommendations**: Menunjukkan apakah pelanggan datang melalui rekomendasi.
+  - **Receive More Updates About Our Courses**: Menunjukkan jika pelanggan memilih untuk menerima pembaruan tentang kursus.
+  - **Tags**: Tag yang diberikan kepada pelanggan yang menunjukkan status terkini dari lead.
+  - **Lead Quality**: Menunjukkan kualitas dari lead berdasarkan data yang diperoleh.
+  - **Update me on Supply Chain Content**: Menunjukkan apakah pelanggan ingin mendapatkan pembaruan tentang konten rantai pasokan.
+  - **Lead Profile**: Profil lead yang ditetapkan untuk setiap pelanggan berdasarkan tingkat keterlibatan mereka.
+  - **City**: Kota dari pelanggan.
+  - **Asymmetrique Activity Index**: Indeks yang diberikan kepada setiap pelanggan berdasarkan aktivitas mereka.
+  - **Asymmetrique Profile Index**: Indeks yang diberikan kepada setiap pelanggan berdasarkan profil mereka.
+  - ... [dan seterusnya untuk kolom lainnya].
+- Terdapat nilai yang hilang yang tersebar di beberapa kolom penting seperti `Country` (2461 nilai hilang), `Specialization` (1438), dan `City` (1420).
+- Statistik deskriptif dasar menunjukkan bahwa:
+  - Rata-rata (`mean`) waktu yang dihabiskan di website adalah sekitar 487.7 menit.
+  - Rata-rata kunjungan (`TotalVisits`) adalah sekitar 3.4 kali.
+  - Skor aktivitas (`Asymmetrique Activity Score`) dan skor profil (`Asymmetrique Profile Score`) memiliki rata-rata sekitar 14.3 dan 16.3 secara berturut-turut.
+
+Temuan awal ini akan digunakan untuk menginformasikan strategi persiapan data dan pemodelan kami.
