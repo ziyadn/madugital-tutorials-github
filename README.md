@@ -8,8 +8,8 @@ ini adalah contoh mini project Habis Kerja : Data Scientist Course, tentang Mode
 Proyek ini akan mengikuti metodologi CRISP-DM, dengan fokus pada pengembangan model yang tidak hanya akurat dari sudut pandang statistik tetapi juga memberikan wawasan bisnis yang dapat ditindaklanjuti untuk meningkatkan konversi leads.
 
 # Tahapan Proyek
-1. **Pemahaman Bisnis (Business Understanding)**
-2. **Pemahaman Data (Data Understanding)**
+1. (**Pemahaman Bisnis (Business Understanding)**)[https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#pemahaman-bisnis-business-understanding]
+2. (**Pemahaman Data (Data Understanding)**)[https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#pemahaman-data-data-understanding]
 3. **Persiapan Data (Data Preparation)**
 4. **Pemodelan Data (Data Modelling)**
 5. **Evaluasi Data (Data Evaluation)**
