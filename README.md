@@ -11,7 +11,7 @@ Proyek ini akan mengikuti metodologi CRISP-DM, dengan fokus pada pengembangan mo
 1. [**Pemahaman Bisnis (Business Understanding)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#pemahaman-bisnis-business-understanding)
 2. [**Pemahaman Data (Data Understanding)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#pemahaman-data-data-understanding)
 3. [**Persiapan Data (Data Preparation)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#persiapan-data-data-preparation)
-4. [**Pemodelan Data (Data Modelling)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#persiapan-data-data-preparation)
+4. [**Pemodelan Data (Data Modelling)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#pemodelan-data-data-modelling)
 5. [**Evaluasi Data (Data Evaluation)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#evaluasi-data-data-evaluation)
 6. [**Deployment**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#deployment)
 
@@ -81,17 +81,17 @@ Temuan awal ini akan digunakan untuk menginformasikan strategi persiapan data da
 ## Persiapan Data (Data Preparation)
 ### 1. Data Cleaning and Preprocessing
 1. Duplicate Removal: membuang records yang duplikasi untuk menjaga integritas data.
-2. Binary Encoding: Kolom tertentu yang memiliki nilai 'Yes' atau 'No' akan dikonversikan ke binary format (1 untuk 'Yes', 0 untuk 'No'). Hal ini dilakukan pada kolom 'Do Not Email', 'Do Not Call', dan bergbagai macam kolom lain yang terkait dengan preferensi dan consent dari User
+2. Binary Encoding: Kolom tertentu yang memiliki nilai 'Yes' atau 'No' akan dikonversikan ke binary format (1 untuk 'Yes', 0 untuk 'No'). Hal ini dilakukan pada kolom `Do Not Email`, `Do Not Call`, dan bergbagai macam kolom lain yang terkait dengan preferensi dan consent dari User
 
 ### 2. Handling Special Cases in Variables:
 1. Merged 'Quick Add Form' dengan 'Lead Ads Form' pada kolom Lead Origin.
-2. Mengelompokkan Kategori yang jarang muncul (kurang dari 1% dari populasi) menjadi kelompok 'Others' pada kolom: Lead Source, Tags, dan Last Notable Activity.
-3. Null values pada TotalVisits dan Page Views Per Visit diisi dengan nilai 0.
-4. Klasifikasi ulang kolom Last Activity menjadi 'Good', 'Bad', dan 'Neutral' categories (dengan Null dianggap sebagai 'Bad').
-5. Informasi Country dikelompokkan menjadi 'Indonesia' dan 'Outside Indonesia'.
-6. Nilai 'Select' dan Null values di kolom Specialization, How did you hear about Madugital, Lead Profile, dan City diganti dengan 'Not Specified'.
-7. Null values di kolom What is your current occupation, What matters most to you in choosing a product, dan Lead Quality diisi dengan 'Not Specified'.
-8. Missing values di kolom Asymmetrique Activity dan Profile dihandling dengan mengisi score menjadi 0 dan indexes menjadi '00.Zero'.
+2. Mengelompokkan Kategori yang jarang muncul (kurang dari 1% dari populasi) menjadi kelompok 'Others' pada kolom: `Lead Source`, `Tags`, dan `Last Notable Activity`.
+3. Null values pada `TotalVisits` dan `Page Views Per Visit` diisi dengan nilai 0.
+4. Klasifikasi ulang kolom `Last Activity` menjadi 'Good', 'Bad', dan 'Neutral' categories (dengan Null dianggap sebagai 'Bad').
+5. Informasi `Country` dikelompokkan menjadi 'Indonesia' dan 'Outside Indonesia'.
+6. Nilai 'Select' dan Null values di kolom `Specialization`, `How did you hear about Madugital`, `Lead Profile`, dan `City` diganti dengan 'Not Specified'.
+7. Null values di kolom `What is your current occupation`, `What matters most to you in choosing a product`, dan `Lead Quality` diisi dengan 'Not Specified'.
+8. Missing values di kolom `Asymmetrique Activity` dan `Profile` dihandling dengan mengisi score menjadi 0 dan indexes menjadi '00.Zero'.
 
 ### 3. Data Transformation and Preprocessing Pipeline
 1. **Preprocessing Pipeline**: Sebuah pipeline dibuat untuk numerical dan categorical features. Untuk numerical features, kami menerapkan constant imputation dan scaling. Sedangkan untuk categorical features, constant imputation dan one-hot encoding diterapkan.
@@ -99,3 +99,7 @@ Temuan awal ini akan digunakan untuk menginformasikan strategi persiapan data da
 
 ### 4. Post-Preprocessing Analysis
 **Data Shape Post-Processing:** Setelah praproses data, kami mendapatkan 123 kolom yang siap digunakan untuk training.
+
+## Pemodelan Data (Data Modelling)
+## Evaluasi Data (Data Evaluation)
+## Deployment
