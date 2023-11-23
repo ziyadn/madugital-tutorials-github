@@ -83,7 +83,7 @@ Temuan awal ini akan digunakan untuk menginformasikan strategi persiapan data da
 1. Duplicate Removal: membuang records yang duplikasi untuk menjaga integritas data.
 2. Binary Encoding: Kolom tertentu yang memiliki nilai 'Yes' atau 'No' akan dikonversikan ke binary format (1 untuk 'Yes', 0 untuk 'No'). Hal ini dilakukan pada kolom 'Do Not Email', 'Do Not Call', dan bergbagai macam kolom lain yang terkait dengan preferensi dan consent dari User
 
-### 2. Handling Special Cases in Categorical Variables:
+### 2. Handling Special Cases in Variables:
 1. Merged 'Quick Add Form' dengan 'Lead Ads Form' pada kolom Lead Origin.
 2. Mengelompokkan Kategori yang jarang muncul (kurang dari 1% dari populasi) menjadi kelompok 'Others' pada kolom: Lead Source, Tags, dan Last Notable Activity.
 3. Null values pada TotalVisits dan Page Views Per Visit diisi dengan nilai 0.
