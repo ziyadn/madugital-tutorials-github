@@ -8,12 +8,12 @@ ini adalah contoh mini project Habis Kerja : Data Scientist Course, tentang Mode
 Proyek ini akan mengikuti metodologi CRISP-DM, dengan fokus pada pengembangan model yang tidak hanya akurat dari sudut pandang statistik tetapi juga memberikan wawasan bisnis yang dapat ditindaklanjuti untuk meningkatkan konversi leads.
 
 # Tahapan Proyek
-1. [**Pemahaman Bisnis (Business Understanding)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#pemahaman-bisnis-business-understanding)
-2. [**Pemahaman Data (Data Understanding)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#pemahaman-data-data-understanding)
-3. [**Persiapan Data (Data Preparation)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#persiapan-data-data-preparation)
-4. [**Pemodelan Data (Data Modelling)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#pemodelan-data-data-modelling)
-5. [**Evaluasi Model (Model Evaluation)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#evaluasi-model-model-evaluation)
-6. [**Deployment**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#deployment)
+1. [**Pemahaman Bisnis (Business Understanding)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#1-pemahaman-bisnis-business-understanding)
+2. [**Pemahaman Data (Data Understanding)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#2-pemahaman-data-data-understanding)
+3. [**Persiapan Data (Data Preparation)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#3-persiapan-data-data-preparation)
+4. [**Pemodelan Data (Data Modelling)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#4-pemodelan-data-data-modelling)
+5. [**Evaluasi Model (Model Evaluation)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#5-evaluasi-model-model-evaluation)
+6. [**Deployment**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#6-deployment)
 
 Setiap tahap akan didokumentasikan secara terperinci di dalam repositori ini.
 
@@ -184,4 +184,4 @@ Dari 10 fitur terbaik yang diidentifikasi dalam model Lead Scoring, kita dapat m
 9. Lead Quality_Might be: Lead yang dianggap mungkin berkualitas. Strategi: Prioritaskan dan kembangkan strategi komunikasi yang lebih personal untuk mengonversi grup ini.
 10. Lead Quality_High in Relevance: Lead yang sangat relevan dengan produk atau layanan. Strategi: Fokuskan sumber daya untuk konversi cepat dari grup ini, mungkin melalui penawaran khusus atau komunikasi prioritas.
 
-## Deployment
+## 6. Deployment
