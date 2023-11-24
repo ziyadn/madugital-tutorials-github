@@ -12,33 +12,33 @@ Proyek ini akan mengikuti metodologi CRISP-DM, dengan fokus pada pengembangan mo
 2. [**Pemahaman Data (Data Understanding)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#pemahaman-data-data-understanding)
 3. [**Persiapan Data (Data Preparation)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#persiapan-data-data-preparation)
 4. [**Pemodelan Data (Data Modelling)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#pemodelan-data-data-modelling)
-5. [**Evaluasi Data (Data Evaluation)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#evaluasi-data-data-evaluation)
+5. [**Evaluasi Model (Model Evaluation)**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#evaluasi-model-model-evaluation)
 6. [**Deployment**](https://github.com/ziyadn/madugital-tutorials-github/blob/main/README.md#deployment)
 
 Setiap tahap akan didokumentasikan secara terperinci di dalam repositori ini.
 
-## Pemahaman Bisnis (Business Understanding)
-### Tujuan Bisnis
+## 1. Pemahaman Bisnis (Business Understanding)
+### 1.1. Tujuan Bisnis
 Tujuan dari proyek ini adalah untuk mengembangkan model machine learning yang dapat memberikan peluang atau skor kepada leads (calon pelanggan) berdasarkan kemungkinan mereka untuk membeli produk kita. Skor ini akan membantu tim pemasaran dan penjualan dalam mengidentifikasi dan memprioritaskan leads yang lebih cenderung untuk dikonversi menjadi pelanggan yang membayar.
 
-### Pertanyaan Bisnis Utama
+### 1.2. Pertanyaan Bisnis Utama
 - Bagaimana kita dapat memprediksi peluang leads untuk menjadi pelanggan yang konversi?
 - Bagaimana kita dapat mengelompokkan leads ke dalam kategori HOT, MEDIUM, dan COLD berdasarkan skor peluang mereka?
 - Dengan menggunakan model prediktif ini, seberapa akurat kita dapat mengidentifikasi dan memprioritaskan leads?
 
-### Kriteria Keberhasilan Proyek
+### 1.3. Kriteria Keberhasilan Proyek
 - Model harus mampu memberikan skor peluang yang akurat dengan mengklasifikasikan leads ke dalam kategori HOT, MEDIUM, atau COLD.
 - Kinerja model harus dinilai dengan metrik yang relevan seperti akurasi, precision, recall, dan F1-Score.
 - Model harus menyediakan threshold yang dapat disesuaikan untuk kategorisasi sehingga dapat disesuaikan dengan strategi penjualan dan pemasaran perusahaan.
 
-### Konteks Tambahan
+### 1.4. Konteks Tambahan
 Data yang telah diupload akan digunakan untuk melatih model machine learning. Kami akan menggunakan `predict_proba` untuk mengestimasi peluang dan kemudian menetapkan setiap lead ke salah satu dari tiga kategori berdasarkan threshold yang akan kita tentukan selama fase pemodelan. Pengelompokan ini akan memungkinkan tim penjualan untuk menyusun strategi yang lebih baik dan meningkatkan efisiensi dalam mengonversi prospek menjadi penjualan yang sukses.
 
-### Data
+### 1.5. Data
 Data untuk proyek ini tersedia dalam file `lead_scoring.csv`, dengan kamus data terkait yang disediakan dalam `Leads Data Dictionary.xlsx`.
 
 ---
-## Pemahaman Data (Data Understanding)
+## 2. Pemahaman Data (Data Understanding)
 Pada tahap ini, kami telah memuat data ke dalam lingkungan Python menggunakan pandas dan melakukan inspeksi awal. Berikut adalah temuan awal kami:
 
 - Data terdiri dari 9240 baris dan 37 kolom.
@@ -78,13 +78,13 @@ Pada tahap ini, kami telah memuat data ke dalam lingkungan Python menggunakan pa
 
 Temuan awal ini akan digunakan untuk menginformasikan strategi persiapan data dan pemodelan kami.
 
-## Persiapan Data (Data Preparation)
-### 1. Data Cleaning and Preprocessing
+## 3. Persiapan Data (Data Preparation)
+### 3.1. Data Cleaning and Preprocessing
 1. Duplicate Removal: membuang records yang duplikasi untuk menjaga integritas data.
-2. Binary Encoding: Kolom tertentu yang memiliki nilai 'Yes' atau 'No' akan dikonversikan ke binary format (1 untuk 'Yes', 0 untuk 'No'). Hal ini dilakukan pada kolom `Do Not Email`, `Do Not Call`, dan bergbagai macam kolom lain yang terkait dengan preferensi dan consent dari User
+2. Binary Encoding: Kolom tertentu yang memiliki nilai 'Yes' atau 'No' akan dikonversikan ke binary format (1 untuk 'Yes', 0 untuk 'No'). Hal ini dilakukan pada kolom `Do Not Email`, `Do Not Call`, dan bergbagai macam kolom lain yang terkait dengan preferensi dan consent dari User.
 
-### 2. Handling Special Cases in Variables:
-1. Merged 'Quick Add Form' dengan 'Lead Ads Form' pada kolom Lead Origin.
+### 3.2. Handling Special Cases in Variables:
+1. Gabungkan 'Quick Add Form' dengan 'Lead Ads Form' pada kolom `Lead Origin`.
 2. Mengelompokkan Kategori yang jarang muncul (kurang dari 1% dari populasi) menjadi kelompok 'Others' pada kolom: `Lead Source`, `Tags`, dan `Last Notable Activity`.
 3. Null values pada `TotalVisits` dan `Page Views Per Visit` diisi dengan nilai 0.
 4. Klasifikasi ulang kolom `Last Activity` menjadi 'Good', 'Bad', dan 'Neutral' categories (dengan Null dianggap sebagai 'Bad').
@@ -93,13 +93,95 @@ Temuan awal ini akan digunakan untuk menginformasikan strategi persiapan data da
 7. Null values di kolom `What is your current occupation`, `What matters most to you in choosing a product`, dan `Lead Quality` diisi dengan 'Not Specified'.
 8. Missing values di kolom `Asymmetrique Activity` dan `Profile` dihandling dengan mengisi score menjadi 0 dan indexes menjadi '00.Zero'.
 
-### 3. Data Transformation and Preprocessing Pipeline
+### 3.3. Data Transformation and Preprocessing Pipeline
 1. **Preprocessing Pipeline**: Sebuah pipeline dibuat untuk numerical dan categorical features. Untuk numerical features, kami menerapkan constant imputation dan scaling. Sedangkan untuk categorical features, constant imputation dan one-hot encoding diterapkan.
 2. **Data Splitting**: Datasets yang sudah dipersiapkan kemudian dipisahkan menjadi dua bagian yaitu training dan test sets, dengan 80% data digunakan untuk training dan 20% untuk testing. Kami melakukan preprocessing sebelum split train-test karena kami tidak melakukan inputasi statistika *(contohnya: mean, meadian, modus filling)*.
 
-### 4. Post-Preprocessing Analysis
+### 3.4. Post-Preprocessing Analysis
 **Data Shape Post-Processing:** Setelah praproses data, kami mendapatkan 123 kolom yang siap digunakan untuk training.
 
-## Pemodelan Data (Data Modelling)
-## Evaluasi Data (Data Evaluation)
+## 4. Pemodelan Data (Data Modelling)
+
+### 4.1. Target Column `Converted`
+Kolom target yang digunakan adalah `Converted`, yang menandakan konversi pelanggan potensial.
+
+### 4.2. Klasifikasi Model
+Kami menggunakan tiga model klasifikasi:
+- Logistic Regression
+- Decision Tree
+- Random Forest
+
+### 4.3. F1 Score sebagai Evaluation Metrics
+F1 Score dipilih sebagai metrik evaluasi utama karena memberikan keseimbangan antara Precision dan Recall, terutama penting dalam kasus kelas yang tidak seimbang.
+
+F1 Score sangat penting dalam konteks bisnis, terutama dalam situasi seperti Lead Scoring, di mana tujuannya adalah untuk menilai dan memprioritaskan prospek atau lead berdasarkan kemungkinan mereka untuk berkonversi menjadi pelanggan.
+
+Dalam Lead Scoring:
+
+- **Precision** (Ketepatan) mewakili proporsi lead yang diidentifikasi oleh model sebagai 'berpotensi berkonversi' yang benar-benar berkonversi. Precision yang tinggi berarti bahwa sebagian besar lead yang model prediksi akan berkonversi benar-benar berkonversi, yang mengurangi waktu dan sumber daya yang dihabiskan untuk mengejar lead yang tidak berkualitas.
+
+- **Recall** (Pelacakan) mengukur proporsi lead aktual yang berkonversi yang diidentifikasi oleh model. Recall yang tinggi berarti model berhasil mengidentifikasi sebagian besar lead yang berpotensi berkonversi, sehingga meminimalkan kehilangan peluang dengan mengabaikan prospek yang baik.
+
+F1 Score memberikan keseimbangan antara precision dan recall. Ini penting karena:
+
+1. **Mengoptimalkan Sumber Daya**: Meningkatkan efisiensi dalam alokasi sumber daya penjualan dan pemasaran. Dengan memfokuskan upaya pada lead yang paling mungkin berkonversi, perusahaan dapat menghemat waktu dan uang.
+
+2. **Meningkatkan ROI**: Dengan memprioritaskan lead yang berkualitas, perusahaan dapat meningkatkan peluang konversi, yang pada gilirannya meningkatkan pengembalian investasi (ROI) dari kampanye pemasaran.
+
+3. **Menghindari Kehilangan Peluang**: Sebuah model dengan F1 Score yang tinggi memastikan bahwa perusahaan tidak melewatkan lead yang berpotensi menguntungkan, sambil tetap meminimalkan gangguan yang disebabkan oleh lead yang tidak berkualitas.
+
+Dalam konteks bisnis seperti Lead Scoring, F1 Score membantu menciptakan keseimbangan yang tepat antara mengidentifikasi sebanyak mungkin lead berkualitas tinggi dan memastikan bahwa lead yang ditindaklanjuti benar-benar memiliki peluang tinggi untuk berkonversi. Ini merupakan kunci untuk mengoptimalkan strategi pemasaran dan penjualan, memastikan bahwa upaya dan sumber daya diarahkan secara efektif untuk memaksimalkan hasil.
+
+### 4.4. Classification Report
+Laporan klasifikasi dihasilkan untuk setiap model untuk memberikan gambaran menyeluruh tentang performa model.
+
+### 4.5. Random Search untuk Hyperparameter Tuning
+Kami menggunakan `RandomizedSearchCV` untuk tuning hyperparameter pada model RandomForest.
+
+### 4.6. Pemilihan Best Parameter dan Evaluasi Model
+Setelah menemukan parameter terbaik menggunakan Random Search, kami mengevaluasi model dengan parameter tersebut.
+
+### 4.7. Top 10 Importance Feature
+Kami menentukan 10 fitur terpenting dalam model menggunakan `feature_importances_` dari RandomForest.
+
+## 5. Evaluasi Model (Model Evaluation)
+
+### 5.1. Hasil Evaluasi Model
+- F1 Score for Logistic Regression	: 0.92
+- F1 Score for Decision Tree		: 0.90
+- F1 Score for Random Forest		: 0.93 (tertinggi)
+
+### 5.2. Parameter Terbaik untuk RandomForest
+Parameter terbaik yang ditemukan melalui RandomSearch untuk RandomForest adalah:  
+`{'n_estimators': 300, 'min_samples_split': 6, 'min_samples_leaf': 1, 'max_features': 'auto', 'max_depth': 80, 'bootstrap': True}`
+
+### 5.3. Hasil F1 Score dengan Parameter Terbaik
+Hasil F1 Score setelah menggunakan best params adalah 0.93.
+
+### 5.4. Sepuluh Fitur Terbaik dari Model
+10 Fitur terbaik yang ditemukan dalam model RandomForest adalah:
+1. Tags_Will revert after reading the email: 0.1907
+2. Total Time Spent on Website: 0.0987
+3. Last Notable Activity_SMS Sent: 0.0512
+4. Tags_Ringing: 0.0493
+5. Lead Profile_Potential Lead: 0.0317
+6. Tags_Not Specified: 0.0292
+7. Tags_Closed by Horizzon: 0.0290
+8. Tags_Lost to EINS: 0.0276
+9. Lead Quality_Might be: 0.0268
+10. Lead Quality_High in Relevance: 0.0240
+
+Dari 10 fitur terbaik yang diidentifikasi dalam model Lead Scoring, kita dapat menarik beberapa strategi bisnis yang dapat diterapkan untuk meningkatkan efektivitas penjualan dan pemasaran. Berikut adalah interpretasi strategis dari fitur-fitur tersebut:
+
+1. Tags_Will revert after reading the email: Menunjukkan bahwa prospek yang menanggapi email dengan indikasi akan memberikan respons lebih lanjut memiliki peluang konversi yang tinggi. Strategi: Fokuskan upaya follow-up pada grup ini dan kembangkan konten email yang menarik dan informatif untuk mempertahankan minat mereka.
+2. Total Time Spent on Website: Waktu yang lebih lama yang dihabiskan di situs web menunjukkan minat yang lebih tinggi. Strategi: Investasikan dalam optimasi situs web untuk meningkatkan keterlibatan dan pertimbangkan retargeting iklan untuk pengunjung yang menghabiskan waktu lama di situs.
+3. Last Notable Activity_SMS Sent: SMS sebagai medium komunikasi terakhir menunjukkan efektivitas dalam mendorong konversi. Strategi: Integrasikan SMS ke dalam strategi komunikasi pemasaran dan personalisasikan pesan untuk meningkatkan engagement.
+4. Tags_Ringing: Prospek yang teleponnya berdering tetapi tidak dijawab mungkin memerlukan pendekatan berbeda. Strategi: Ulangi upaya kontak dengan strategi alternatif seperti email atau pesan teks.
+5. Lead Profile_Potential Lead: Mengidentifikasi lead sebagai 'potensial' berdasarkan profil mereka. Strategi: Kembangkan konten dan penawaran khusus yang ditargetkan untuk kelompok ini, dengan memanfaatkan data profil untuk personalisasi.
+6. Tags_Not Specified: Kurangnya informasi spesifik tentang prospek. Strategi: Tingkatkan upaya pengumpulan data untuk lebih mengenal calon pelanggan ini dan mengkategorikan mereka secara lebih efektif.
+7. Tags_Closed by Horizzon: Ini menunjukkan penutupan yang efektif oleh tim atau proses tertentu. Strategi: Analisis dan replikasi metode penutupan ini di seluruh tim.
+8. Tags_Lost to EINS: Kehilangan lead ke kompetitor. Strategi: Pelajari alasan di balik kehilangan ini untuk meningkatkan penawaran dan strategi retensi.
+9. Lead Quality_Might be: Lead yang dianggap mungkin berkualitas. Strategi: Prioritaskan dan kembangkan strategi komunikasi yang lebih personal untuk mengonversi grup ini.
+10. Lead Quality_High in Relevance: Lead yang sangat relevan dengan produk atau layanan. Strategi: Fokuskan sumber daya untuk konversi cepat dari grup ini, mungkin melalui penawaran khusus atau komunikasi prioritas.
+
 ## Deployment
