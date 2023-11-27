@@ -23,11 +23,11 @@ Tujuan dari proyek ini adalah untuk mengembangkan model machine learning yang da
 
 ### 1.2. Pertanyaan Bisnis Utama
 - Bagaimana kita dapat memprediksi peluang leads untuk menjadi pelanggan yang konversi?
-- Bagaimana kita dapat mengelompokkan leads ke dalam kategori HOT, MEDIUM, dan COLD berdasarkan skor peluang mereka?
+- Bagaimana kita dapat mengelompokkan leads ke dalam kategori HOT, WARM, dan COLD berdasarkan skor peluang mereka?
 - Dengan menggunakan model prediktif ini, seberapa akurat kita dapat mengidentifikasi dan memprioritaskan leads?
 
 ### 1.3. Kriteria Keberhasilan Proyek
-- Model harus mampu memberikan skor peluang yang akurat dengan mengklasifikasikan leads ke dalam kategori HOT, MEDIUM, atau COLD.
+- Model harus mampu memberikan skor peluang yang akurat dengan mengklasifikasikan leads ke dalam kategori HOT, WARM, atau COLD.
 - Kinerja model harus dinilai dengan metrik yang relevan seperti akurasi, precision, recall, dan F1-Score.
 - Model harus menyediakan threshold yang dapat disesuaikan untuk kategorisasi sehingga dapat disesuaikan dengan strategi penjualan dan pemasaran perusahaan.
 
