@@ -158,7 +158,7 @@ Parameter terbaik yang ditemukan melalui RandomSearch untuk RandomForest adalah:
 Hasil F1 Score setelah menggunakan best params adalah 0.93.
 
 ### 5.4. Sepuluh Fitur Terbaik dari Model
-<figure><img src="feat_importance.jpg"><figcaption>10 Fitur terbaik yang ditemukan dalam model RandomForest</figcaption></figure>
+<figure><img src="feat_importance.png"><figcaption>10 Fitur terbaik yang ditemukan dalam model RandomForest</figcaption></figure>
 
 Dari 10 fitur terbaik yang diidentifikasi dalam model Lead Scoring, kita dapat menarik beberapa strategi bisnis yang dapat diterapkan untuk meningkatkan efektivitas penjualan dan pemasaran. Berikut adalah interpretasi strategis dari fitur-fitur tersebut:
 
