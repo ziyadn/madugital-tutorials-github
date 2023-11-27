@@ -37,7 +37,6 @@ Data yang telah diupload akan digunakan untuk melatih model machine learning. Ka
 ### 1.5. Data
 Data untuk proyek ini tersedia dalam file `lead_scoring.csv`, dengan kamus data terkait yang disediakan dalam `Leads Data Dictionary.xlsx`.
 
----
 ## 2. Pemahaman Data (Data Understanding)
 Pada tahap ini, kami telah memuat data ke dalam lingkungan Python menggunakan pandas dan melakukan inspeksi awal. Berikut adalah temuan awal kami:
 
@@ -184,4 +183,62 @@ Dari 10 fitur terbaik yang diidentifikasi dalam model Lead Scoring, kita dapat m
 9. Lead Quality_Might be: Lead yang dianggap mungkin berkualitas. Strategi: Prioritaskan dan kembangkan strategi komunikasi yang lebih personal untuk mengonversi grup ini.
 10. Lead Quality_High in Relevance: Lead yang sangat relevan dengan produk atau layanan. Strategi: Fokuskan sumber daya untuk konversi cepat dari grup ini, mungkin melalui penawaran khusus atau komunikasi prioritas.
 
+### 5.5. Simpan Model
+Simpan model menggunakan `pickle` ke suatu folder, agar bisa di deploy oleh pihak lain tanpa melakukan training ulang data.
+
 ## 6. Deployment
+
+Proses deployment model ini mencakup pemuatan model dan preprocessor yang telah dilatih, menerima data input, mengolahnya, dan menghasilkan prediksi dalam bentuk kategori lead dan skor. Berikut adalah ringkasan langkah-langkah yang diambil:
+
+### 6.1. Pemuatan Model dan Preprocessor
+Model dan preprocessor yang telah dilatih sebelumnya disimpan dalam format `.sav` menggunakan `pickle`. Keduanya kemudian dimuat kembali ke dalam skrip Python.
+
+```python
+import pandas as pd
+import os
+import pickle
+
+# Load Model
+filename = os.path.join('model', 'best_rf_model.sav')
+file = open(filename,'rb')
+best_rf_model = pickle.load(file)
+
+# Load Preprocessor
+filename = os.path.join('model', 'preprocessor.sav')
+file = open(filename,'rb')
+preprocessor = pickle.load(file)
+```
+### 6.2. Persiapan data input & transformasi data
+
+Biasanya, data yang masuk akan berformat JSON (atau mirip dictionary). Data input diubah menjadi DataFrame pandas, yang memungkinkan kita untuk menerapkan proses transformasi yang sama seperti yang dilakukan selama pelatihan model. Data input di-transformasi menggunakan preprocessor yang telah dilatih. Transformasi ini menyesuaikan data ke format yang diharapkan model.
+
+```python
+# Mengubah data menjadi DataFrame
+data_df = pd.DataFrame([data])
+
+# Melakukan transformasi dengan preprocessor
+data_preprocessed = preprocessor.transform(data_df)
+```
+
+### 6.3. Prediksi dan Kategorisasi
+Model digunakan untuk menghitung probabilitas konversi lead. Berdasarkan probabilitas ini, lead dikategorikan sebagai 'HOT', 'WARM', atau 'COLD'. Sebuah skor juga dihitung untuk memberikan penilaian numerik atas kemungkinan konversi.
+
+```python
+# Melakukan prediksi probabilitas dengan model, dan membuat score dari hasil prediksi probabilitas
+probability_result = best_rf_model.predict_proba(data_preprocessed)[0][1]
+score = round(probability_result * 100, 2)
+
+# membuat kategori leads untuk mempermudah identifikasi oleh salesman
+if probability_result<0.5:
+    category = 'COLD'
+elif probability_result>=0.75:
+    category = 'HOT'
+else:
+    category = 'WARM'
+
+# menampilkan ID customer untuk follow-up oleh salesman
+customer_id = data['Prospect ID']
+
+# Menampilkan hasil prediksi
+print(f"Customer dengan ID {customer_id}, masuk dalam kategori {category} leads, dengan score : {score}")
+```
