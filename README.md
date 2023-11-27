@@ -158,17 +158,7 @@ Parameter terbaik yang ditemukan melalui RandomSearch untuk RandomForest adalah:
 Hasil F1 Score setelah menggunakan best params adalah 0.93.
 
 ### 5.4. Sepuluh Fitur Terbaik dari Model
-10 Fitur terbaik yang ditemukan dalam model RandomForest adalah:
-1. Tags_Will revert after reading the email: 0.1907
-2. Total Time Spent on Website: 0.0987
-3. Last Notable Activity_SMS Sent: 0.0512
-4. Tags_Ringing: 0.0493
-5. Lead Profile_Potential Lead: 0.0317
-6. Tags_Not Specified: 0.0292
-7. Tags_Closed by Horizzon: 0.0290
-8. Tags_Lost to EINS: 0.0276
-9. Lead Quality_Might be: 0.0268
-10. Lead Quality_High in Relevance: 0.0240
+<figure><img src="feat_importance.jpg"><figcaption>10 Fitur terbaik yang ditemukan dalam model RandomForest</figcaption></figure>
 
 Dari 10 fitur terbaik yang diidentifikasi dalam model Lead Scoring, kita dapat menarik beberapa strategi bisnis yang dapat diterapkan untuk meningkatkan efektivitas penjualan dan pemasaran. Berikut adalah interpretasi strategis dari fitur-fitur tersebut:
 
